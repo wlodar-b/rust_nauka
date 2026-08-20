@@ -2,23 +2,22 @@ use std::thread;
 use std::time::Duration;
 
 fn main() {
-    let mut minutes = 0;
-    'counting_up: loop {
-        let mut seconds = 0;
+    let mut seconds = 0;
+    let mut minutes = 2;
 
-        loop {            
-        println!("Actual time {minutes}:{seconds}");
+    while minutes != -1 {
         thread::sleep(Duration::from_secs(1));
-            if seconds == 60 {
-                break;
-            }
-            if minutes == 3 {
-                break 'counting_up;
-            }
-            seconds += 1;
+        println!("Time to liftoff: {minutes}:{seconds}!");
+        seconds -= 1;
+
+        if seconds == -1 {
+            seconds += 60;
+            minutes -= 1;
         }
 
-        minutes += 1;
+        if minutes == -1 {
+            break;
+        }
     }
-    println!("End count = {minutes}");
+    println!("LIFTOFF!!!");
 }
