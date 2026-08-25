@@ -34,14 +34,14 @@ fn main() {
     if fragment == "Blad" {
         println!("UWAGA! Wykryto: {}", fragment);
         // Zauważyliśmy błąd, więc chcemy dopisać flagę PILNE do oryginału
-        log_systemowy.push_str(" [PILNE]");  // ❌ TUTAJ KOMPILATOR RZUCA BŁĘDEM (brak uprawnienia W)
+        log_systemowy.push_str(" [PILNE]");  
     } else {
         // Jeśli to nie był błąd, oznaczamy jako zwykłe INFO
-        log_systemowy.push_str(" [INFO]");   // ✅ TUTAJ KOD ZADZIAŁA BEZ PROBLEMU!
+        log_systemowy.push_str(" [INFO]");   
     }
 }
 */
-
+/*
 fn main() {
     let mut wozek = String::from("Wózek nr 3: W spoczynku");
 
@@ -54,7 +54,7 @@ fn main() {
 
     // 2. Operator rusza wózkiem i system próbuje zmienić status.
     // Używamy &mut, żeby funkcja mogła fizycznie zmienić oryginalny tekst!
-    zmien_status(&mut wozek, "W ruchu"); // ❌ TUTAJ KOMPILATOR KRZYCZY: "cannot borrow as mutable"
+    zmien_status(&mut wozek, "W ruchu"); 
 
 }
 
@@ -62,4 +62,28 @@ fn main() {
 fn zmien_status(maszyna: &mut String, nowy_status: &str) {
     maszyna.clear();
     maszyna.push_str(nowy_status);
+}
+*/
+
+fn main() {
+    let mut polecenie = String::from("Rozładunek rampy nr 1");
+
+            // 1. Pracownik A patrzy na swój terminal (odczyt)
+    let ekran_pracownika_a = &polecenie;
+    println!("Pracownik A poszedł wykonać: {}", ekran_pracownika_a);
+
+    // 2. Kierownik nagle zmienia priorytet w systemie (wymaga &mut)
+    zmien_priorytet(&mut polecenie, "PILNE: Załadunek tira nr 4"); 
+
+    // 3. Pracownik B patrzy na swój terminal (odczyt)
+    let ekran_pracownika_b = &polecenie;
+
+    // 4. System loguje to, co zobaczyli pracownicy
+    println!("Pracownik B poszedł wykonać: {}", ekran_pracownika_b);
+}
+
+// Funkcja kierownika
+fn zmien_priorytet(aktualne_polecenie: &mut String, nowe: &str) {
+    aktualne_polecenie.clear();
+    aktualne_polecenie.push_str(nowe);
 }
