@@ -42,3 +42,24 @@ fn main() {
 }
 */
 
+fn main() {
+    let mut wozek = String::from("Wózek nr 3: W spoczynku");
+
+    // 1. System dyspozytora pobiera referencję, żeby tylko odczytać status
+    let podglad = &wozek;
+
+    
+    // 3. Dyspozytor odświeża ekran i odczytuje swój podgląd
+    println!("Na ekranie dyspozytora: {}", podglad);
+
+    // 2. Operator rusza wózkiem i system próbuje zmienić status.
+    // Używamy &mut, żeby funkcja mogła fizycznie zmienić oryginalny tekst!
+    zmien_status(&mut wozek, "W ruchu"); // ❌ TUTAJ KOMPILATOR KRZYCZY: "cannot borrow as mutable"
+
+}
+
+// Funkcja, która przyjmuje referencję mutowalną i podmienia tekst
+fn zmien_status(maszyna: &mut String, nowy_status: &str) {
+    maszyna.clear();
+    maszyna.push_str(nowy_status);
+}
