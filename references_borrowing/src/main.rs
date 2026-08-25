@@ -118,10 +118,47 @@ fn main() {
 }
 */
 
+/*
 fn domyslna_etykieta() -> &'static str {
     "BRAK-DANYCH"
 }
 
 fn main() {
     println!("Drukuję: {}", domyslna_etykieta());
+}
+*/
+
+/*
+// 1. Zmieniamy sygnaturę na &mut (wypożyczamy do zapisu, ale nie kradniemy!)
+fn wygeneruj_raport_kurierski(lista_towarow: &mut Vec<String>) -> String {
+    lista_towarow.push(String::from("ZAPIECZĘTOWANO")); 
+    lista_towarow.join(" | ")
+}
+
+fn main() {
+    let mut paleta = vec![String::from("Laptop"), String::from("Myszka")];
+    
+    // 2. Przekazujemy wskaźnik mutowalny
+    let raport = wygeneruj_raport_kurierski(&mut paleta); 
+    
+    println!("Do druku: {}", raport);
+    
+    // 3. paleta wciąż tu jest i należy do main!
+    // println!("Oryginał wciąż istnieje: {:?}", paleta); 
+}
+*/
+
+fn wygeneruj_raport_kurierski(lista_towarow: &Vec<String>) -> String {
+    // Tworzymy fizyczna nazwana kopie oryginalu
+    let mut kopia_robocza = lista_towarow.clone();
+    // Modyfikujemy tylka nasza kopie
+    kopia_robocza.push(String::from("ZAPIECZĘTOWANO")); 
+    // Generujemy tekst z kopii
+    kopia_robocza.join(" | ")
+}
+
+fn main() {
+    let paleta = vec![String::from("Laptop"), String::from("Myszka")];
+    let raport = wygeneruj_raport_kurierski(&paleta);
+    println!("Do druku: {}", raport);
 }
