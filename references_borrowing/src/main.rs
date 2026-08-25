@@ -90,7 +90,7 @@ fn zmien_priorytet(aktualne_polecenie: &mut String, nowe: &str) {
 }
 */
 
-
+/*
 // 1. Zmieniamy sygnaturę funkcji: zwracamy pełnoprawny String, a nie referencję (&String)
 fn wygeneruj_kod() -> String {
     let nowy_kod = String::from("KOD-9988");
@@ -102,4 +102,16 @@ fn main() {
     // 3. Zmienna 'kod' staje się nowym, dumnym właścicielem danych na Stercie!
     let kod = wygeneruj_kod();
     println!("Skanuję: {}", kod);
+}
+*/
+
+fn main() {
+    let paleta = String::from("Paleta nr 12 - Elektronika");
+    
+    let inspekcja = &paleta; // 1. Wypożyczamy do odczytu
+    
+    println!("Raport z inspekcji: {}", inspekcja); // 3. Ostatnie użycie referencji
+    
+    drop(paleta); 
+    
 }
