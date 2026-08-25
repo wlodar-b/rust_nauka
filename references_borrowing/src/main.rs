@@ -65,6 +65,7 @@ fn zmien_status(maszyna: &mut String, nowy_status: &str) {
 }
 */
 
+/*
 fn main() {
     let mut polecenie = String::from("Rozładunek rampy nr 1");
 
@@ -86,4 +87,19 @@ fn main() {
 fn zmien_priorytet(aktualne_polecenie: &mut String, nowe: &str) {
     aktualne_polecenie.clear();
     aktualne_polecenie.push_str(nowe);
+}
+*/
+
+
+// 1. Zmieniamy sygnaturę funkcji: zwracamy pełnoprawny String, a nie referencję (&String)
+fn wygeneruj_kod() -> String {
+    let nowy_kod = String::from("KOD-9988");
+    // 2. Oddajemy samą zmienną, BEZ ampersanda. Przenosimy jej własność wyżej.
+    nowy_kod 
+}
+
+fn main() {
+    // 3. Zmienna 'kod' staje się nowym, dumnym właścicielem danych na Stercie!
+    let kod = wygeneruj_kod();
+    println!("Skanuję: {}", kod);
 }
