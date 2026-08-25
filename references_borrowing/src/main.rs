@@ -105,6 +105,7 @@ fn main() {
 }
 */
 
+/*
 fn main() {
     let paleta = String::from("Paleta nr 12 - Elektronika");
     
@@ -114,4 +115,13 @@ fn main() {
     
     drop(paleta); 
     
+}
+*/
+
+fn domyslna_etykieta() -> &'static str {
+    "BRAK-DANYCH"
+}
+
+fn main() {
+    println!("Drukuję: {}", domyslna_etykieta());
 }
