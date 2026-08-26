@@ -148,6 +148,7 @@ fn main() {
 }
 */
 
+/*
 fn wygeneruj_raport_kurierski(lista_towarow: &Vec<String>) -> String {
     // Tworzymy fizyczna nazwana kopie oryginalu
     let mut kopia_robocza = lista_towarow.clone();
@@ -161,4 +162,20 @@ fn main() {
     let paleta = vec![String::from("Laptop"), String::from("Myszka")];
     let raport = wygeneruj_raport_kurierski(&paleta);
     println!("Do druku: {}", raport);
+}
+*/
+
+fn main() {
+    let mut paleta = vec![String::from("Laptop")];
+    
+    // 1. Pracownik A bierze referencję do pierwszej paczki
+    let inspekcja_laptopa = &paleta[0]; 
+
+    
+    // 3. Pracownik A próbuje odczytać dane
+    println!("Sprawdzam stan: {}", inspekcja_laptopa); 
+
+    // 2. Wózkowy dorzuca kolejny towar (Zagrożenie realokacją!)
+    paleta.push(String::from("Myszka")); // ❌ BŁĄD KOMPILATORA
+
 }
