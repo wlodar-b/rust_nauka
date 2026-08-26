@@ -180,6 +180,8 @@ fn main() {
 
 }
 */
+
+/*
 // Sygnatura funkcji:
 // 1. `&Vec<String>` - pożyczamy (borrowing) wektor z adresami tylko do odczytu (R). 
 //    Nie zabieramy go na własność (O), więc oryginał jest bezpieczny!
@@ -215,4 +217,20 @@ fn main() {
     // Dzięki temu Borrow Checker pozwala funkcji tylko "spojrzeć" na listę,
     // a my nie tracimy do niej praw własności wewnątrz `main`.
     println!("Wysyłka do: {}", generuj_naklejke(&adres));
+}
+*/
+
+
+fn dodaj_duze_paczki(glowna_paleta: &mut Vec<String>, nowe_paczki: &Vec<String>) {
+    
+    // ✅ NAPRAWIONE: Wyciągamy samą długość (liczbę). Paleta zostaje odblokowana!
+    let najwieksza = glowna_paleta.iter().max_by_key(|p| p.len()).unwrap().len();
+
+    for paczka in nowe_paczki {
+        // ...wewnątrz pętli sprawdzamy tylko liczby...
+        if paczka.len() > najwieksza {
+            // ...więc możemy bezpiecznie mutować główną paletę!
+            glowna_paleta.push(paczka.clone()); 
+        }
+    }
 }
