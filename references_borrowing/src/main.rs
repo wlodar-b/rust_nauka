@@ -164,7 +164,7 @@ fn main() {
     println!("Do druku: {}", raport);
 }
 */
-
+/*
 fn main() {
     let mut paleta = vec![String::from("Laptop")];
     
@@ -178,4 +178,41 @@ fn main() {
     // 2. Wózkowy dorzuca kolejny towar (Zagrożenie realokacją!)
     paleta.push(String::from("Myszka")); // ❌ BŁĄD KOMPILATORA
 
+}
+*/
+// Sygnatura funkcji:
+// 1. `&Vec<String>` - pożyczamy (borrowing) wektor z adresami tylko do odczytu (R). 
+//    Nie zabieramy go na własność (O), więc oryginał jest bezpieczny!
+// 2. `-> String` - funkcja "produkuje" i zwraca w pełni nowy, wygenerowany tekst.
+fn generuj_naklejke(czesci_adresu: &Vec<String>) -> String {
+    
+    // OPTYMALIZACJA "BEST PRACTICE": 
+    // Zamiast klonować cały wektor (co zużywa pamięć i czas procesora), używamy metody `.join()`.
+    // `.join()` łączy elementy wektora i z automatu tworzy dla nas NOWY obiekt `String`.
+    // Dajemy `mut`, bo zaraz będziemy chcieli do tego nowego tekstu przybić naszą "pieczątkę".
+    let mut naklejka = czesci_adresu.join(", ");
+    
+    // Używamy `.push_str()`, aby dokleić tekst bezpośrednio na końcu istniejącego Stringa.
+    // Przekazujemy zwykły literał znakowy (tekst w cudzysłowach), co jest super wydajne, 
+    // bo nie zmuszamy Rusta do dodatkowej alokacji na Stercie (unikamy `String::from()`).
+    naklejka.push_str(", POLSKA"); 
+
+    // Zwracamy gotową zmienną (nasz połączony tekst z dopiskiem).
+    // Brak średnika na końcu tej linijki to w Ruście odpowiednik słowa `return`.
+    naklejka
+}
+
+fn main() {
+    // Tworzymy wektor tekstów (nasz oryginał). 
+    // Właścicielem tych danych na Stercie jest funkcja `main`.
+    let adres = vec![
+        String::from("Jan Kowalski"), 
+        String::from("ul. Magazynowa 5"), 
+        String::from("Wrocław")
+    ];
+    
+    // Wywołujemy funkcję, przekazując `adres` przez referencję `&`.
+    // Dzięki temu Borrow Checker pozwala funkcji tylko "spojrzeć" na listę,
+    // a my nie tracimy do niej praw własności wewnątrz `main`.
+    println!("Wysyłka do: {}", generuj_naklejke(&adres));
 }
