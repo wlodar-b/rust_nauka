@@ -220,7 +220,7 @@ fn main() {
 }
 */
 
-
+/*
 fn dodaj_duze_paczki(glowna_paleta: &mut Vec<String>, nowe_paczki: &Vec<String>) {
     
     // ✅ NAPRAWIONE: Wyciągamy samą długość (liczbę). Paleta zostaje odblokowana!
@@ -233,4 +233,27 @@ fn dodaj_duze_paczki(glowna_paleta: &mut Vec<String>, nowe_paczki: &Vec<String>)
             glowna_paleta.push(paczka.clone()); 
         }
     }
+}
+*/
+
+fn main() {
+    // 1. Wektor `paleta` powstaje na stercie i jest JEDYNYM, prawowitym właścicielem 
+    // kartonu z napisem "Skaner kodów".
+    let paleta = vec![String::from("Skaner kodów")];
+    
+    // 2. Pobieramy przepustkę (referencję współdzieloną) do pierwszego elementu.
+    // Typ &String oznacza uprawnienie "tylko do odczytu" (Read). Nie przejmujemy własności!
+    let przepustka: &String = &paleta[0]; 
+    
+    // ✅ 3. NAPRAWIONE: Zamiast próbować wyciągnąć oryginał przez dereferencję (*przepustka),
+    // co spowodowałoby błąd (próba Move), używamy metody `.to_string()`.
+    // Ta metoda tworzy dla nas zupełnie nowy, niezależny obiekt String w pamięci (legalne ksero).
+    // Oryginał bezpiecznie zostaje na palecie!
+    let legalna_kopia: String = przepustka.to_string(); 
+    
+    // 4. Używamy naszej nowej, sklonowanej zmiennej w raporcie.
+    println!("Raport: {}", legalna_kopia);
+    
+    // 5. Dowód, że oryginał przetrwał! (Odkomentuj, żeby sprawdzić)
+    // println!("Sprawdzam paletę: {}", paleta[0]); 
 }
