@@ -28,7 +28,7 @@ loop {
     let wybor: u32 = wybor
     .trim()
     .parse()
-    .expect("Wybierz cyfre 1-3!");
+    .expect("Wybierz cyfre 1-4!");
 
     match wybor {
         1 => {
