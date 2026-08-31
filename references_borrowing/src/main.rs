@@ -236,6 +236,7 @@ fn dodaj_duze_paczki(glowna_paleta: &mut Vec<String>, nowe_paczki: &Vec<String>)
 }
 */
 
+/*
 fn main() {
     // 1. Wektor `paleta` powstaje na stercie i jest JEDYNYM, prawowitym właścicielem 
     // kartonu z napisem "Skaner kodów".
@@ -256,4 +257,19 @@ fn main() {
     
     // 5. Dowód, że oryginał przetrwał! (Odkomentuj, żeby sprawdzić)
     // println!("Sprawdzam paletę: {}", paleta[0]); 
+}
+*/
+
+fn main() {
+    let mut paleta_zwrotow = vec![
+        String::from("Uszkodzony Dron"),
+        String::from("Pęknięty Monitor")
+    ];
+
+    // ✅ ROZWIĄZANIE: Używamy metody .remove(), podając indeks.
+    // Wyciąga ona element z wektora i oddaje nam go na własność!
+    let dron_do_naprawy: String = paleta_zwrotow.remove(0); 
+
+    println!("Wysyłam do serwisu: {}", dron_do_naprawy);
+    println!("Zostało na palecie: {:?}", paleta_zwrotow);
 }
