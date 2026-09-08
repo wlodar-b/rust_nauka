@@ -80,11 +80,19 @@ let s2 = s_ref.clone();
 println!("{s}");
 }
 */
-
+/*
 fn main() {
     let mut s = String::from("Hello");
     println!("{s}");
     let s_ref = &mut s;
 s_ref.push_str(" world");
 
+}
+*/
+
+fn main() {
+let mut v = vec![1, 2, 3];
+let n = v[0];
+v.push(4);
+println!("{n}");
 }
