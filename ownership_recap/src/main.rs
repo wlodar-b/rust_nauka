@@ -55,10 +55,19 @@ fn consume_a_string(_s: String) {
 }
 */
 
+/*
 fn main() {
     let mut s = String::from("Hello");
     let s_ref = &mut s; // ZMIANA: Tworzymy referencję mutowalną (&mut)
     
     s_ref.push_str(" world"); // Działa! *s_ref ma teraz uprawnienia +R i +W.
     println!("{s_ref}");
+}
+*/
+
+fn main() {
+let mut s = String::from("Hello");
+let s_ref = &s;
+println!("{s_ref}");
+s.push_str(" world");
 }
