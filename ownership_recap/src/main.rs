@@ -12,6 +12,7 @@ fn main() {
 }
 */
 
+/*
 fn main() {
     let s = String::from("Hello world");
     consume_a_string(s); 
@@ -21,3 +22,35 @@ fn main() {
 fn consume_a_string(_s: String) {
     // om nom nom
 }
+*/
+/*
+// NAPRAWIONY KOD 2 (Opcja A - referencje):
+fn main() {
+    let s = String::from("Hello world");
+    
+    // Przekazujemy tylko referencję. `s` zachowuje swoje uprawnienia O i W.
+    consume_a_string(&s); 
+    
+    // `s` wciąż żyje, mamy uprawnienie R, więc to zadziała:
+    println!("{s}"); 
+}
+
+fn consume_a_string(_s: &String) { // Zmiana sygnatury na referencję
+    // Funkcja może tylko odczytać tekst
+}
+
+// NAPRAWIONY KOD 2 (Opcja B - klonowanie):
+fn main() {
+    let s = String::from("Hello world");
+    
+    // Tworzymy idealną kopię na stercie i oddajemy JĄ funkcji.
+    // Oryginalne `s` w ogóle nie bierze udziału w przeniesieniu.
+    consume_a_string(s.clone()); 
+    
+    println!("{s}"); // `s` zachowało wszystkie uprawnienia!
+}
+
+fn consume_a_string(_s: String) {
+    // Funkcja zjada swoją własną kopię
+}
+*/
