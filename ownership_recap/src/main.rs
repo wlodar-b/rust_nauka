@@ -64,10 +64,18 @@ fn main() {
     println!("{s_ref}");
 }
 */
-
+/*
 fn main() {
 let mut s = String::from("Hello");
 let s_ref = &s;
 println!("{s_ref}");
 s.push_str(" world");
+}
+*/
+
+fn main() {
+let s = String::from("Hello");
+let s_ref = &s;
+let s2 = s_ref.clone();
+println!("{s}");
 }
