@@ -72,10 +72,19 @@ println!("{s_ref}");
 s.push_str(" world");
 }
 */
-
+/*
 fn main() {
 let s = String::from("Hello");
 let s_ref = &s;
 let s2 = s_ref.clone();
 println!("{s}");
+}
+*/
+
+fn main() {
+    let mut s = String::from("Hello");
+    println!("{s}");
+    let s_ref = &mut s;
+s_ref.push_str(" world");
+
 }
