@@ -19,4 +19,4 @@ fn main() {
 println!("Dostępny produkt to: {} w cenie: {} zł", klawiatura.name, klawiatura.price);
 klawiatura.in_stock = false;
 println!("Czy produkt jest dostępny? {}", klawiatura.in_stock);
-}
+} 
