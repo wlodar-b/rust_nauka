@@ -89,10 +89,19 @@ s_ref.push_str(" world");
 
 }
 */
-
+/*
 fn main() {
 let mut v = vec![1, 2, 3];
 let n = v[0];
 v.push(4);
 println!("{n}");
+}
+*/
+
+fn main() {
+let v = vec![1, 2, 3];
+let v_ref: &Vec<i32> = &v;
+let v2 = v_ref.clone();
+drop(v2);
+drop(v);
 }
