@@ -22,7 +22,7 @@ klawiatura.in_stock = false;
 println!("Czy produkt jest dostępny? {}", klawiatura.in_stock);
 } 
 */
-
+/*
 struct Product {
     name: String,
     price: f64,
@@ -45,4 +45,21 @@ fn main() {
     };
 
     println!("Oryginalna cena: {}", klawiatura_v1.price);
+}
+
+*/
+
+struct Size(u32, u32);
+struct Coordinates(u32, u32);
+
+fn main() {
+    let size = Size(800, 600);
+    let coordinate = Coordinates(10, 20);
+    // let pozycja: Coordinates = size;
+
+
+    println!("Szerokość struktury Size wynosi: {}", size.0);
+
+    let Coordinates(x, y) = coordinate;
+    println!("Współrzędne to: ({}, {})", x, y);
 }
