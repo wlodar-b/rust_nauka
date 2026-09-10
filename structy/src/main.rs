@@ -90,7 +90,7 @@ fn main() {
     };
 }
 */
-
+/*
 struct Player {
     name: String,
     score: u32,
@@ -114,4 +114,18 @@ fn main() {
     // PYTANIE 2: Czy usunięcie komentarza z poniższej linijki (gdybyśmy wstawili 
     // ją ZANIM `points_ref` przestanie być używane) wywołałoby błąd?
     println!("Cały gracz to: {}, punktów: {}", gracz.name, gracz.score);
+}
+*/
+
+
+struct Point {
+  x: i32,
+  y: i32,
+}
+fn main() {
+  let mut a = Point { x: 1, y: 2 };
+  a.x += 1;
+  let b = Point { y: 1, ..a };
+  a.x += 1;
+  println!("{}", b.x);
 }
