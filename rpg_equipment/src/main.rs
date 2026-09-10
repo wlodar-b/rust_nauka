@@ -40,9 +40,9 @@ fn main() {
     loot_item(&mut geralt, kusza);
     show_inventory(&geralt);
     calculate_total_weight(&geralt);
-    println!("Aktualne HP {} wynosi: {}", geralt.name, geralt.hp );
+    println!("Aktualny poziom zdrowia {} wynosi: {}hp", geralt.name, geralt.hp );
     take_damage(&mut geralt, 30);
-    println!("Aktualne HP {} wynosi: {}", geralt.name, geralt.hp );
+    println!("Aktualny poziom zdrowia {} wynosi: {}hp", geralt.name, geralt.hp );
 }
 
 fn take_damage(player: &mut Player, amount: u32) {
