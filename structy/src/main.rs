@@ -75,6 +75,7 @@ fn main() {
 }
 */
 
+/*
 struct Post {
     title: String,
     content: String,
@@ -87,4 +88,30 @@ fn main() {
         content: "Uczę się Rusta i idzie mi świetnie!".to_string(),
         likes: 10,
     };
+}
+*/
+
+struct Player {
+    name: String,
+    score: u32,
+}
+
+fn main() {
+    let mut gracz = Player {
+        name: String::from("Hero"),
+        score: 10,
+    };
+
+    // Pożyczamy TYLKO wynik mutowalnie
+    let points_ref = &mut gracz.score;
+
+    // PYTANIE 1: Czy ta linijka się skompiluje, jeśli usuniemy komentarz?
+    println!("Imię gracza to: {}", gracz.name);
+
+    // Zwiększamy wynik przez referencję
+    *points_ref += 5;
+
+    // PYTANIE 2: Czy usunięcie komentarza z poniższej linijki (gdybyśmy wstawili 
+    // ją ZANIM `points_ref` przestanie być używane) wywołałoby błąd?
+    println!("Cały gracz to: {}, punktów: {}", gracz.name, gracz.score);
 }
