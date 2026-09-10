@@ -49,6 +49,7 @@ fn main() {
 
 */
 
+/*
 struct Size(u32, u32);
 struct Coordinates(u32, u32);
 
@@ -62,4 +63,28 @@ fn main() {
 
     let Coordinates(x, y) = coordinate;
     println!("Współrzędne to: ({}, {})", x, y);
+}
+*/
+/*
+struct ZdarzenieZapisano;
+
+fn main() {
+    let sygnal = ZdarzenieZapisano;
+
+    println!("Zdarzenie zostało poprawnie obsłuzone!");
+}
+*/
+
+struct Post {
+    title: String,
+    content: String,
+    likes: u32,
+}
+
+fn main() {
+    let moj_post = Post {
+        title: "Mój pierwszy post".to_string(),
+        content: "Uczę się Rusta i idzie mi świetnie!".to_string(),
+        likes: 10,
+    };
 }
