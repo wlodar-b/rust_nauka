@@ -117,7 +117,7 @@ fn main() {
 }
 */
 
-
+/*
 struct Point {
   x: i32,
   y: i32,
@@ -128,4 +128,45 @@ fn main() {
   let b = Point { y: 1, ..a };
   a.x += 1;
   println!("{}", b.x);
+}
+*/
+/*
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+    value: u32,
+    weight:u32,
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+        value: 100,
+        weight: 30,
+    };
+
+    dbg!(&rect1);
+
+    println!("rect1 is {rect1:#?}");
+
+}
+*/
+
+#[derive(Debug)]
+struct Rectangle {
+  width: u32,
+  height: u32,
+}
+fn main() {
+  let rect1 = Rectangle {
+    width: 30,
+    height: 50,
+  };
+  let a = area(rect1);
+  println!("{} * {} = {}", rect1.width, rect1.height, a);
+}
+fn area(rectangle: Rectangle) -> u32 {
+  rectangle.width * rectangle.height
 }
