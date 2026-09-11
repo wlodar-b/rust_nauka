@@ -35,17 +35,17 @@ impl Wallet {
             println!("Błąd: Niewystarczająca ilość środków na przelew!");
         }
     }
+
+    fn new(owner_name: String, initial_balance: u32) -> Self {
+        Self {
+            owner: owner_name,
+            balance: initial_balance,
+        }
+    }
 }
 fn main() {
-    let mut my_wallet = Wallet {
-        owner: "Bartek".to_string(),
-        balance: 100,
-    };
-
-    let mut alice_wallet = Wallet {
-        owner: "Alice".to_string(),
-        balance: 50,
-    };
+    let mut my_wallet = Wallet::new("Bartek".to_string(), 100);
+    let mut alice_wallet = Wallet::new("Alice".to_string(), 100);
 
     println!("Stan początkowy portfeli:");
     my_wallet.show_info();
